@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Example Insurance Company ('CO') Quote Request (AKA stock check) for  crash parts using OEM #s. -->
+<S:Envelope xmlns:S="http://schemas.xmlsoap.org/soap/envelope/">
+	<!-- [REQUIRED SECTION] -->
+	<S:Header/>
+	<S:Body>
+		<!-- [REQUIRED SECTION] -->
+		<ns5:NewQuoteRequest xmlns:ns5="http://tempuri.org/ProcurementServices/ws-hosted"
+                           xmlns:ns2="http://tempuri.org/cccquote.xsd"
+                           xmlns="http://tempuri.org/Fault.xsd"
+                           xmlns:ns4="http://tempuri.org/cccpurchaseorder.xsd"
+                           xmlns:ns3="http://tempuri.org/ccccommon.xsd">
+			<ns5:tracingLevel>DEBUG</ns5:tracingLevel>
+			<!-- [OPTIONAL FIELD]; [OFF],[DEBUG],[WARNING],[ERROR],[INFO] -->
+			<ns5:userId>CCC-PROC</ns5:userId>
+			<!-- [OPTIONAL FIELD]; System Routing User ID (e.g. 'CCC-PROC'). -->
+			<ns5:applicationId>12345678</ns5:applicationId>
+			<!-- [REQUIRED FIELD]; Your CCC APS Supplier ID #. -->
+			<ns5:userType>Buyer</ns5:userType>
+			<!-- [IGNORE]; Refer to <clientType> to determine RF vs CO. -->
+			<ns2:Quote>
+				<ns2:quoteId>99988699</ns2:quoteId>
+				<!-- [REQUIRED FIELD]; Unique CCC-generated Quote Procurement ID invisible to appraisers. -->
+				<ns2:deliveryZipCode>90703</ns2:deliveryZipCode>
+				<!-- [REQUIRED FIELD]; Zip code as defined by CCC client software end user. -->
+				<ns2:requiredDeliveryDate>2017-01-05T22:49:45.053Z</ns2:requiredDeliveryDate>
+				<!-- [OPTIONAL FIELD]; Default value, or what end user has selected as 'Required By' in CCC client software. -->
+				<ns2:documentName>2006 HUMM H3 SUV 4WD</ns2:documentName>
+				<!-- [OPTIONAL FIELD]; Name of Document being exchanged.  RF = "New Quote for RO: [RO#]"; CO = "[Vehicle Year]/[Make]/Model]" -->
+				<ns2:comments>AFTERMARKET,RE_MANUFACTURED,RECONDITIONED,OEM_DISCOUNTED,OPTIONAL_OEM_BLEMISHED,OPTIONAL_OEM_OVERRUN,RECYCLED</ns2:comments>
+				<!-- [IGNORE; CO ONLY] -->
+				<ns2:clientType>CO</ns2:clientType>
+				<!-- [REQUIRED FIELD]; 'RF' = Repair Facility body shop, 'CO' = Insurance Company -->
+				<ns2:createdDateTime>2016-12-29T22:49:45.092Z</ns2:createdDateTime>
+				<!-- [OPTIONAL FIELD]; Request creation date/time. -->
+				<ns2:createdByUserId>FA ReqId000000000</ns2:createdByUserId>
+				<!-- [OPTIONAL FIELD]; RF = CCC client software end user login id; CO = [company code] + [unique identifier] -->
+				<ns2:vehicleInfo>
+					<ns3:vehicleMakeName>HUMM</ns3:vehicleMakeName>
+					<!-- [OPTIONAL FIELD]; CCC's 2-4 character code. -->
+					<ns3:vehicleModelName>H3 SUV 4WD</ns3:vehicleModelName>
+					<!-- [OPTIONAL FIELD] -->
+					<ns3:vehicleYear>2006</ns3:vehicleYear>
+					<!-- [OPTIONAL FIELD] -->
+					<ns3:vehicleVin>UNK</ns3:vehicleVin>
+					<!-- [OPTIONAL FIELD]; VIN#, 'UNK' for Unknown, or blank. -->
+					<ns3:vehicleEngineCode>10EZ</ns3:vehicleEngineCode>
+					<!-- [OPTIONAL FIELD; CO ONLY] -->
+					<ns3:vehicleModelNumber>H3 SUV 4WD</ns3:vehicleModelNumber>
+					<!-- [OPTIONAL FIELD; CO ONLY] -->
+					<ns3:vehicleBodyStyle>4D UTV</ns3:vehicleBodyStyle>
+					<!-- [OPTIONAL FIELD; CO ONLY] -->
+				</ns2:vehicleInfo>
+				<ns2:estimateInfo>
+					<ns3:estimateVersion>E01</ns3:estimateVersion>
+					<!-- [REQUIRED FIELD]; [E01], [S01], [UPD], [RPD], [S02], [S03], etc -->
+					<ns3:insuranceClaimNumber>TEST_FAClaim</ns3:insuranceClaimNumber>
+					<!-- [OPTIONAL FIELD] -->
+					<ns3:insuranceCompanyName>FARMERS INSURANCE</ns3:insuranceCompanyName>
+					<!-- [OPTIONAL FIELD]; 'space character' = blank/no related insurance company defined -->
+				</ns2:estimateInfo>
+				<ns2:estimatorInfo>
+					<ns3:estimatorFirstName>unknown</ns3:estimatorFirstName>
+					<!-- [CONDITIONAL FIELD]; RF = Appraiser First name; CO = "unknown" -->
+					<ns3:estimatorLastName>unknown</ns3:estimatorLastName>
+					<!-- [CONDITIONAL FIELD]; RF = Appraiser Last name; CO = "unknown" -->
+				</ns2:estimatorInfo>
+				<ns2:partLineItems>
+					<!-- [REQUIRED SECTION]; This lineItem section may repeat when more than 1 part are requested. -->
+					<ns2:lineItem>
+						<ns2:lineNumber>39</ns2:lineNumber>
+						<!-- [REQUIRED FIELD]; End users will not know this database line number. -->
+						<ns2:partNumber>9597233</ns2:partNumber>
+						<!-- [REQUIRED FIELD]; OEM Part Number -->
+						<ns2:partDescription>Wheel, alloy 16" code: (QA7)</ns2:partDescription>
+						<!-- [REQUIRED FIELD]; OEM Part Description -->
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<!-- [REQUIRED FIELD]; NOTE: Quote Quantity may not always equal the PO Request lineItem orderQty. -->
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<!-- [IGNORE]; Quote Request always sends as '5000.0'. -->
+						<ns2:interchangeNumber>560-06303,560-06306,560-06304B,560-06304A</ns2:interchangeNumber>
+						<!-- [OPTIONAL FIELD]; Hollander Interchange Number(s) provided when known. -->
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>46</ns2:lineNumber>
+						<ns2:partNumber>12450108</ns2:partNumber>
+						<ns2:partDescription>LT Signal lamp bulb</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>29</ns2:lineNumber>
+						<ns2:partNumber>15951164</ns2:partNumber>
+						<ns2:partDescription>RT Headlamp assy</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<ns2:interchangeNumber>114-01098</ns2:interchangeNumber>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>45</ns2:lineNumber>
+						<ns2:partNumber>19259479</ns2:partNumber>
+						<ns2:partDescription>LT Tail lamp assy</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<ns2:interchangeNumber>166-00146</ns2:interchangeNumber>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>26</ns2:lineNumber>
+						<ns2:partNumber>15780849</ns2:partNumber>
+						<ns2:partDescription>Upper molding gray</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>40</ns2:lineNumber>
+						<ns2:partNumber>9594681</ns2:partNumber>
+						<ns2:partDescription>Wheel nut</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>19</ns2:lineNumber>
+						<ns2:partNumber>25798711</ns2:partNumber>
+						<ns2:partDescription>Sunroof glass</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>38</ns2:lineNumber>
+						<ns2:partNumber>9594959</ns2:partNumber>
+						<ns2:partDescription>Spare Spare wheel</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>27</ns2:lineNumber>
+						<ns2:partNumber>25931894</ns2:partNumber>
+						<ns2:partDescription>Weatherstrip</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>12</ns2:lineNumber>
+						<ns2:partNumber>12346392</ns2:partNumber>
+						<ns2:partDescription>Adhesive kit</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>31</ns2:lineNumber>
+						<ns2:partNumber>15834195</ns2:partNumber>
+						<ns2:partDescription>Grille assy prime</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<ns2:interchangeNumber>104-00261,104-00277,104-00221B,104-00221A</ns2:interchangeNumber>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>25</ns2:lineNumber>
+						<ns2:partNumber>15240816</ns2:partNumber>
+						<ns2:partDescription>Repair kit park brake hardware</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>15</ns2:lineNumber>
+						<ns2:partNumber>24301327</ns2:partNumber>
+						<ns2:partDescription>Evaporator core</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<ns2:interchangeNumber>680-00112</ns2:interchangeNumber>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>8</ns2:lineNumber>
+						<ns2:partNumber>15298546</ns2:partNumber>
+						<ns2:partDescription>Windshield GM</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<ns2:interchangeNumber>270-00283</ns2:interchangeNumber>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>2</ns2:lineNumber>
+						<ns2:partNumber>15817909</ns2:partNumber>
+						<ns2:partDescription>RT Tow hook</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>42</ns2:lineNumber>
+						<ns2:partNumber>25754190</ns2:partNumber>
+						<ns2:partDescription>Valve stem grommet</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>10</ns2:lineNumber>
+						<ns2:partNumber>89027201</ns2:partNumber>
+						<ns2:partDescription>RT Belt &amp; retractor</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>21</ns2:lineNumber>
+						<ns2:partNumber>15905577</ns2:partNumber>
+						<ns2:partDescription>RT Qtr glass GM w/o privacy</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<ns2:interchangeNumber>284-00304A,284-00304B,284-00305B,284-00305A</ns2:interchangeNumber>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>22</ns2:lineNumber>
+						<ns2:partNumber>25895795</ns2:partNumber>
+						<ns2:partDescription>Sunroof frame</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>17</ns2:lineNumber>
+						<ns2:partNumber>8654799</ns2:partNumber>
+						<ns2:partDescription>Trans pan gasket</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>41</ns2:lineNumber>
+						<ns2:partNumber>20927604</ns2:partNumber>
+						<ns2:partDescription>TPMS sensor</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>34</ns2:lineNumber>
+						<ns2:partNumber>15847488</ns2:partNumber>
+						<ns2:partDescription>Hood</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<ns2:interchangeNumber>117-00300B</ns2:interchangeNumber>
+					</ns2:lineItem>
+					<ns2:lineItem>
+						<ns2:lineNumber>14</ns2:lineNumber>
+						<ns2:partNumber>10397108</ns2:partNumber>
+						<ns2:partDescription>Heater core</ns2:partDescription>
+						<ns2:quoteQty>1</ns2:quoteQty>
+						<ns2:listPrice>5000.0</ns2:listPrice>
+						<ns2:interchangeNumber>676-00103</ns2:interchangeNumber>
+					</ns2:lineItem>
+				</ns2:partLineItems>
+			</ns2:Quote>
+		</ns5:NewQuoteRequest>
+	</S:Body>
+</S:Envelope>
